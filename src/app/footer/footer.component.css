@@ -1,0 +1,10 @@
+.bottom-nav {
+    align-content: space-around;
+    position: fixed;
+    bottom: 0px;
+    z-index: 100;
+}
+
+.center {
+    margin: 0px auto;
+}

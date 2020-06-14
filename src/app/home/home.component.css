@@ -1,0 +1,33 @@
+.feed {
+    width: 60%;
+    margin: 0px auto;
+}
+
+
+.post {
+    width: 100%;
+    margin-bottom: 2rem;
+  }
+
+  .post-author {
+    font-weight: bold;
+    margin-right: 0.5rem;
+  }
+  
+  .post-header-image {
+    background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png');
+    background-size: cover;
+  }
+
+.more-btn {
+    margin-left: 1rem;
+    font-weight: lighter;
+    cursor: pointer;
+}
+
+.last {
+    margin-bottom: 50px;
+}
+
+
+  

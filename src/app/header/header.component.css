@@ -1,0 +1,10 @@
+.toolbar-title {
+    margin-left: 1.6rem;
+    font-size: larger;
+}
+
+.fill-remaining-space {
+    flex: 1 1 auto;
+}
+
+

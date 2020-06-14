@@ -28,6 +28,9 @@
 .last {
     margin-bottom: 50px;
 }
-
+.btn-right {
+    margin-left: auto;
+    width: 40px;
+}
 
   

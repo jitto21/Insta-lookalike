@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { PostModel } from './post.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
   public posts: PostModel[];
   private bookmarkedPosts: PostModel[];
 
-  constructor(private homeService: HomeService) { }
+  constructor(private homeService: HomeService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
     this.homeService.getPosts()
@@ -45,6 +46,16 @@ export class HomeComponent implements OnInit {
     post.bookmark = !post.bookmark;
     console.log("Boomkark=> ", post);
     this.homeService.bookmarkPost(post);
+    if(post.bookmark) {
+      this._snackBar.open("Saved to Bookmarks", "OK", {
+        duration: 2000,
+      });
+    } else {
+      this._snackBar.open("Removed from Bookmarks", "", {
+        duration: 2000,
+      });
+    }
+
   }
 
   onLikePost(post: PostModel) {

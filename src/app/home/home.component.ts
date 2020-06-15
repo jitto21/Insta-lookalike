@@ -35,20 +35,26 @@ export class HomeComponent implements OnInit {
         this.loading = false;
         console.log(resData);
         this.posts.push(...resData);
+        
         if(this.posts.length > 30) {
           this._snackBar.open("Posts Limit Reached", "OK", {
             duration: 2000,
           });
         return;
         }
-        this.bookmarkedPosts = this.homeService.getBookmarkPosts().bookmarkedPosts;
-        this.bookmarkedPosts.forEach(bPost => {
-          this.posts.map(post=> {
-            if(bPost.author === post.author) {
-              post.bookmark = bPost.bookmark;
-            }
-          })
-        })
+
+        try {
+          this.bookmarkedPosts = this.homeService.getBookmarkPosts().bookmarkedPosts;
+          this.bookmarkedPosts.forEach(bPost => {
+            this.posts.map(post=> {
+              if(bPost.author === post.author) {
+                post.bookmark = bPost.bookmark;
+              }
+            })
+          }) 
+        } catch (error) {
+          
+        }
         console.log("Posts ==> ", this.posts);
       },(error)=> this.loading = false);
   }

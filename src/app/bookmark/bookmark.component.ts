@@ -10,12 +10,17 @@ import { PostModel } from '../home/post.model';
 export class BookmarkComponent implements OnInit {
 
   public bookmarkedPosts: PostModel[]
-
+  public available: boolean;
   constructor(private homeService: HomeService) { }
 
   ngOnInit(): void {
-    this.bookmarkedPosts = this.homeService.getBookmarkPosts().bookmarkedPosts;
-    console.log("In Bookmark ==> ", this.bookmarkedPosts);
+    try {
+      this.bookmarkedPosts = this.homeService.getBookmarkPosts().bookmarkedPosts;
+      console.log("In Bookmark ==> ", this.bookmarkedPosts);
+      this.available = true;
+    } catch (error) {
+      this.available = false;
+    }
   }
 
   onClickMore(post: PostModel) {

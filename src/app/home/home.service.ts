@@ -14,6 +14,7 @@ export class HomeService {
     constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
 
     getPosts(pageNum: number) {
+        this.saveToLocalStorage();
         return this.http.get<{ articles: any, status: string, totalResults: number }>
             (`${this.url}`)
             .pipe(map(obj => {
@@ -41,7 +42,7 @@ export class HomeService {
 
     bookmarkPost(post: PostModel) {
         this.bookmarkedPosts = JSON.parse(localStorage.getItem('bookmark')).bookmarkedPosts;
-        if(post.bookmark) {
+        if (post.bookmark) {
             this.bookmarkedPosts.push(post);
 
         } else {
@@ -50,13 +51,18 @@ export class HomeService {
             })
         }
         console.log("Bookmarked Posts ==> ", this.bookmarkedPosts);
-        let bookmark = {
-            bookmarkedPosts: this.bookmarkedPosts
-        }
-        localStorage.setItem('bookmark', JSON.stringify(bookmark)) 
+        this.saveToLocalStorage();
     }
 
     getBookmarkPosts() {
         return JSON.parse(localStorage.getItem('bookmark'));
+    }
+
+    private saveToLocalStorage() {
+        console.log("Saving to Local Storage")
+        let bookmark = {
+            bookmarkedPosts: this.bookmarkedPosts
+        }
+        localStorage.setItem('bookmark', JSON.stringify(bookmark))
     }
 }

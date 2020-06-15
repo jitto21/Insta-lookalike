@@ -1,11 +1,13 @@
-<div class="bookmarks">
-    <div class="feed">
+<div class="bookmark-container">
+    <div *ngIf="bookmarkedPosts.length>0" class="bookmarks">
         <mat-card class="post" *ngFor="let post of bookmarkedPosts">
             <mat-card-header>
                 <div mat-card-avatar class="post-header-image"></div>
                 <mat-card-title>{{ post.author }}</mat-card-title>
             </mat-card-header>
-            <img mat-card-image [src]="post.imagePath" [alt]="">
+            <div class="img-wrapper">
+                <img mat-card-image [src]="post.imagePath" [alt]="">
+            </div>
             <mat-card-content>
                 <p>
                     <span class="post-author">{{ post.author }}.</span>
@@ -13,13 +15,15 @@
                 </p>
                 <p *ngIf="post.more" class="desc">{{ post.description }}</p>
                 <!-- <span class="more-btn" (click)="onViewComments(post)">View All Comments</span>
-                <div class="comments" *ngIf="post.comments.length>0">
-                    <p *ngFor="let comment of post.comments">
-                        {{ comment }}
-                    </p>
-                </div> -->
+                    <div class="comments" *ngIf="post.comments.length>0">
+                        <p *ngFor="let comment of post.comments">
+                            {{ comment }}
+                        </p>
+                    </div> -->
             </mat-card-content>
         </mat-card>
-    
+    </div>
+    <div *ngIf="bookmarkedPosts.length<=0" class="alert alert-danger">
+        No Bookmarks
     </div>
 </div>

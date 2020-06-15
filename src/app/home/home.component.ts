@@ -9,16 +9,38 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  public posts: PostModel[];
+
+  public posts: PostModel[] = [];
+  pageNumber: number = 1;
+  public moreMsg: boolean = true;
+  public loading: boolean = false;;
   private bookmarkedPosts: PostModel[];
 
   constructor(private homeService: HomeService, private _snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    this.homeService.getPosts()
-      .subscribe((resData: PostModel[]) => {
+    this.getPosts(this.pageNumber);
+  }
+
+  onScrollDown() {
+    // this.pageNumber++;
+    // this.getPosts(this.pageNumber);
+    // console.log("scrolling down ",this.pageNumber);
+  }
+
+  getPosts(pageNum: number) {
+    this.loading = true;
+    this.homeService.getPosts(pageNum)
+      .subscribe((resData) => {
+        this.loading = false;
         console.log(resData);
-        this.posts = resData;
+        this.posts.push(...resData);
+        if(this.posts.length > 30) {
+          this._snackBar.open("Posts Limit Reached", "OK", {
+            duration: 2000,
+          });
+        return;
+        }
         this.bookmarkedPosts = this.homeService.getBookmarkPosts().bookmarkedPosts;
         this.bookmarkedPosts.forEach(bPost => {
           this.posts.map(post=> {
@@ -28,10 +50,11 @@ export class HomeComponent implements OnInit {
           })
         })
         console.log("Posts ==> ", this.posts);
-      })
+      },(error)=> this.loading = false);
   }
 
   onClickMore(post: PostModel) {
+    this.moreMsg = !this.moreMsg;
     post.more = !post.more;
   }
 

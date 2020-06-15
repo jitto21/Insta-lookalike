@@ -1,37 +1,45 @@
-<div class="feed">
-    <mat-card class="post" [ngClass]="{'last': i==20}" *ngFor="let post of posts; let i=index;">
-        <mat-card-header>
-            <div mat-card-avatar class="post-header-image"></div>
-            <mat-card-title>{{ post.author }}</mat-card-title>
-        </mat-card-header>
-        <img mat-card-image [src]="post.imagePath" [alt]="">
-        <mat-card-content>
-            <p>
-                <span class="post-author">{{ post.author }}.</span>
-                {{post.title}}<span class="more-btn" (click)="onClickMore(post)">more...</span>
-            </p>
-            <p *ngIf="post.more" class="desc">{{ post.description }}</p>
-            <span class="more-btn" (click)="onViewComments(post)">View All Comments</span>
-            <div class="comments" *ngIf="post.comments.length>0">
-                <p *ngFor="let comment of post.comments">
-                    {{ comment }}
+<div class="feed-container">
+    <mat-spinner *ngIf="loading"></mat-spinner>
+    <div class="feed" *ngIf="posts.length>0" infinite-scroll (scrolled)="onScrollDown()">
+        <mat-card class="post" [ngClass]="{'last': i==20}" *ngFor="let post of posts; let i=index;">
+            <mat-card-header>
+                <div mat-card-avatar class="post-header-image"></div>
+                <mat-card-title>{{ post.author }}</mat-card-title>
+            </mat-card-header>
+            <img mat-card-image [src]="post.imagePath" [alt]="">
+            <mat-card-content>
+                <p>
+                    <span class="post-author">{{ post.author }}.</span>
+                    {{post.title}}
+                    <span class="more-btn" (click)="onClickMore(post)">
+                        <p>{{moreMsg ? 'more...' : 'hide.'}}</p>
+                    </span>
                 </p>
-            </div>
-        </mat-card-content>
-        <mat-card-actions>
-            <button (click)="onLikePost(post)" mat-button>
-                <i *ngIf="!post.like" class="fa fa-heart-o" style="font-size:1.3rem"></i>
-                <i *ngIf="post.like" class="fa fa-heart" style="font-size:1.3rem"></i>
-            </button>
-            <button mat-button><i class="fa fa-comment-o" style="font-size:1.3rem"></i>
-            </button>
-            <button mat-button><i class="fa fa-paper-plane-o" style="font-size:1.3rem"></i>
-            </button>
-            <button (click)="onBookmarkPost(post)" mat-button>
-                <i *ngIf="!post.bookmark" class="fa fa-bookmark-o" style="font-size:1.3rem"></i>
-                <i *ngIf="post.bookmark" class="fa fa-bookmark" style="font-size:1.3rem"></i>
-            </button>
-        </mat-card-actions>
-    </mat-card>
-
+                <p *ngIf="post.more" class="desc">{{ post.description }}</p>
+                <span class="more-btn" (click)="onViewComments(post)">View All Comments</span>
+                <div class="comments" *ngIf="post.comments.length>0">
+                    <p *ngFor="let comment of post.comments">
+                        {{ comment }}
+                    </p>
+                </div>
+            </mat-card-content>
+            <mat-card-actions>
+                <button (click)="onLikePost(post)" mat-button>
+                    <i *ngIf="!post.like" class="fa fa-heart-o"></i>
+                    <i *ngIf="post.like" class="fa fa-heart" ></i>
+                </button>
+                <button mat-button><i class="fa fa-comment-o" ></i>
+                </button>
+                <button mat-button><i class="fa fa-paper-plane-o"></i>
+                </button>
+                <button (click)="onBookmarkPost(post)" mat-button>
+                    <i *ngIf="!post.bookmark" class="fa fa-bookmark-o"></i>
+                    <i *ngIf="post.bookmark" class="fa fa-bookmark"></i>
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+    <div *ngIf="posts.length<=0 && !loading" class="alert alert-danger" role="alert">
+        Error in Fetching Posts
+    </div>
 </div>

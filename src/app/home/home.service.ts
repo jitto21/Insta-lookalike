@@ -1,19 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { map, tap } from 'rxjs/operators';
+import { map, tap, catchError } from 'rxjs/operators';
 import { PostModel } from './post.model';
-import { Subject } from 'rxjs';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable({ providedIn: 'root' })
-export class HomeService {
 
+export class HomeService {
+    private url = 'http://cookbookrecipes.in/test/index.php'
+    private oldUrl = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=52871604ab134b14a6cac9673865a2a5'
     bookmarkedPosts: PostModel[] = [];
 
-    constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient, private _snackBar: MatSnackBar) { }
 
-    getPosts() {
+    getPosts(pageNum: number) {
         return this.http.get<{ articles: any, status: string, totalResults: number }>
-            ('https://newsapi.org/v2/top-headlines?country=us&apiKey=52871604ab134b14a6cac9673865a2a5')
+            (`${this.url}`)
             .pipe(map(obj => {
                 console.log(obj);
                 return obj.articles.map(post => {
@@ -22,6 +24,8 @@ export class HomeService {
                         imagePath: post.urlToImage,
                         title: post.title,
                         description: post.description,
+                        content: post.content,
+                        publishedAt: post.publishedAt,
                         comments: [],
                         like: false,
                         bookmark: false,
@@ -36,7 +40,7 @@ export class HomeService {
     }
 
     bookmarkPost(post: PostModel) {
-        
+        this.bookmarkedPosts = JSON.parse(localStorage.getItem('bookmark')).bookmarkedPosts;
         if(post.bookmark) {
             this.bookmarkedPosts.push(post);
 

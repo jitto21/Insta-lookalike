@@ -1,11 +1,30 @@
-.feed {
-    width: 60%;
+.feed-container {
+    width: 95%;
     margin: 0px auto;
 }
 
+mat-spinner {
+  margin: 0px auto;
+  width: 5rem;
+}
+
+mat-card-actions button {
+  padding: 0px;
+  margin: 0px;
+}
+
+mat-card-actions i {
+  font-size: 1.2rem;
+}
+
+.feed {
+  width: 100%;
+  margin: 0px auto;
+}
 
 .post {
-    width: 100%;
+    width: 80%;
+    margin: 0px auto;
     margin-bottom: 2rem;
   }
 

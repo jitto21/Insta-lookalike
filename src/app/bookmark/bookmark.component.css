@@ -1,33 +1,48 @@
-.bookmarks {
-    width: 60%;
-    margin: 0px auto;
+.bookmark-container {
+  width: 95%;
+  margin: 0px auto;
 }
 
+.bookmarks {
+  display: flex;
+  align-content: flex-start;
+  flex-wrap: wrap;
+}
 
-.post {
-    width: 100%;
-    margin-bottom: 2rem;
-  }
+.bookmarks>mat-card {
+  margin: 0.4rem;
+  /* margin-left: auto;
+  margin-right: auto; */
+  max-width: 30rem;
+  max-height: 22.5rem;
+}
 
-  .post-author {
-    font-weight: bold;
-    margin-right: 0.5rem;
-  }
-  
-  .post-header-image {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png');
-    background-size: cover;
-  }
+.img-wrapper {
+  margin-top: 1rem;
+  width: 15rem;
+  height: 10.5rem;
+}
+
+.img-wrapper img {
+  height: 100%;
+}
+
+.post-author {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.post-header-image {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png');
+  background-size: cover;
+}
 
 .more-btn {
-    margin-left: 1rem;
-    font-weight: lighter;
-    cursor: pointer;
+  margin-left: 1rem;
+  font-weight: lighter;
+  cursor: pointer;
 }
 
 .last {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
-
-
-  

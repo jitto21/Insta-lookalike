@@ -37,7 +37,7 @@ export class HomeService {
     }
 
     getComments() {
-        return this.http.get('https://cookbookrecipes.in/test.php');
+        return this.http.get('https://cors-anywhere.herokuapp.com/https://cookbookrecipes.in/test.php');
     }
 
     bookmarkPost(post: PostModel) {

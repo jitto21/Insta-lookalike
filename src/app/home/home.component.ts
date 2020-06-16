@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   public posts: PostModel[] = [];
   pageNumber: number = 1;
   public moreMsg: boolean = true;
+  public commentMsg: boolean = true;
   public loading: boolean = false;;
   private bookmarkedPosts: PostModel[];
 
@@ -66,8 +67,10 @@ export class HomeComponent implements OnInit {
 
   onViewComments(post: PostModel) {
     this.homeService.getComments()
-      .subscribe(resData => {
+      .subscribe((resData: any) => {
         console.log(resData);
+        post.comments = resData;
+        this.commentMsg = !this.commentMsg;
       })
   }
 

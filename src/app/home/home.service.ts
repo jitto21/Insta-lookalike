@@ -7,7 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Injectable({ providedIn: 'root' })
 
 export class HomeService {
-    private url = 'http://cookbookrecipes.in/test/index.php'
+    private url = 'https://cookbookrecipes.in/test/index.php'
     private oldUrl = 'https://newsapi.org/v2/top-headlines?country=us&apiKey=52871604ab134b14a6cac9673865a2a5'
     bookmarkedPosts: PostModel[] = [];
 
@@ -37,7 +37,7 @@ export class HomeService {
     }
 
     getComments() {
-        return this.http.get('http://cookbookrecipes.in/test.php');
+        return this.http.get('https://cookbookrecipes.in/test.php');
     }
 
     bookmarkPost(post: PostModel) {

@@ -1,6 +1,6 @@
 .feed-container {
-    width: 95%;
-    margin: 0px auto;
+  /* width: 95%;
+  margin: 0px auto; */
 }
 
 mat-spinner {
@@ -23,33 +23,37 @@ mat-card-actions i {
 }
 
 .post {
-    width: 80%;
-    margin: 0px auto;
-    margin-bottom: 2rem;
-  }
+  width: 80%;
+  margin: 0px auto;
+  margin-bottom: 2rem;
+}
 
-  .post-author {
-    font-weight: bold;
-    margin-right: 0.5rem;
-  }
-  
-  .post-header-image {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png');
-    background-size: cover;
-  }
+.post-author {
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.post-header-image {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/70/User_icon_BLACK-01.png");
+  background-size: cover;
+}
 
 .more-btn {
-    margin-left: 1rem;
-    font-weight: lighter;
-    cursor: pointer;
+  margin-left: 1rem;
+  font-weight: lighter;
+  cursor: pointer;
 }
 
 .last {
-    margin-bottom: 50px;
+  margin-bottom: 50px;
 }
 .btn-right {
-    margin-left: auto;
-    width: 40px;
+  margin-left: auto;
+  width: 40px;
 }
 
-  
+#more-hide {
+  font-style: italic;
+  font-size: 0.8rem;
+  color: rgba(128, 128, 128, 0.6);
+}

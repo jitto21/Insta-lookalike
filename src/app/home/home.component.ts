@@ -33,10 +33,11 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.homeService.getPosts(pageNum)
       .subscribe((resData) => {
-        this.loading = false;
+        setTimeout(() => {
+          this.loading = false;
+        }, 3000);
         console.log(resData);
         this.posts.push(...resData);
-        
         if(this.posts.length > 30) {
           this._snackBar.open("Posts Limit Reached", "OK", {
             duration: 2000,

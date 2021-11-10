@@ -13,6 +13,7 @@ import { BookmarkComponent } from './bookmark/bookmark.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { IonicModule } from '@ionic/angular';
+import { LoadingComponent } from './loading/loading.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { IonicModule } from '@ionic/angular';
     HomeComponent,
     HeaderComponent,
     BookmarkComponent,
-    FooterComponent
+    FooterComponent,
+    LoadingComponent
   ],
   imports: [
     BrowserModule,

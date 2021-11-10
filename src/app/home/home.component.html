@@ -1,7 +1,11 @@
-<div class="feed-container">
-    <mat-spinner *ngIf="loading"></mat-spinner>
-    <div class="feed" *ngIf="posts.length>0" infinite-scroll (scrolled)="onScrollDown()">
-        <mat-card class="post" [ngClass]="{'last': i==20}" *ngFor="let post of posts; let i=index;">
+<div class="feed-container" *ngIf="!loading">
+  <div
+    class="feed"
+    *ngIf="posts.length > 0"
+    infinite-scroll
+    (scrolled)="onScrollDown()"
+  >
+    <!-- <mat-card class="post" [ngClass]="{'last': i==20}" *ngFor="let post of posts; let i=index;">
             <mat-card-header>
                 <div mat-card-avatar class="post-header-image"></div>
                 <mat-card-title>{{ post.author }}</mat-card-title>
@@ -37,9 +41,45 @@
                     <i *ngIf="post.bookmark" class="fa fa-bookmark"></i>
                 </button>
             </mat-card-actions>
-        </mat-card>
-    </div>
-    <div *ngIf="posts.length<=0 && !loading" class="alert alert-danger" role="alert">
-        Error in Fetching Posts
-    </div>
+        </mat-card> -->
+    <ion-card
+      class="post"
+      [ngClass]="{ last: i == 20 }"
+      *ngFor="let post of posts; let i = index"
+    >
+      <ion-card-header>
+        {{ post.author }}
+      </ion-card-header>
+      <img mat-card-image [src]="post.imagePath" [alt]="" />
+      <ion-card-content>
+        <p>
+          <span class="post-author">{{ post.author }}.</span>
+          {{ post.title }}
+          <span class="more-btn" (click)="onClickMore(post)">
+            <p id="more-hide">{{ moreMsg ? "more..." : "hide." }}</p>
+          </span>
+        </p>
+        <p *ngIf="post.more" class="desc">{{ post.description }}</p>
+        <!-- <span class="more-btn" (click)="onViewComments(post)"
+          >{{ commentMsg ? "View" : "Hide." }}All Comments</span
+        >
+        <div class="comments mb-1" *ngIf="!commentMsg">
+          <p *ngFor="let comment of post.comments">
+            <span class="post-author">{{ comment.username }}</span>
+            {{ comment.comments }}
+          </p>
+        </div> -->
+      </ion-card-content>
+    </ion-card>
+  </div>
+  <div
+    *ngIf="posts.length <= 0 && !loading"
+    class="alert alert-danger"
+    role="alert"
+  >
+    Error in Fetching Posts
+  </div>
+</div>
+<div class="loading" *ngIf="loading">
+  <app-loading></app-loading>
 </div>

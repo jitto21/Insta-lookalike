@@ -1,24 +1,30 @@
 <ion-toolbar class="bottom-nav">
-    <ion-buttons>
-        <ion-button>
-                <ion-icon name="home-outline"></ion-icon>
-                <ion-icon name="home" *ngIf="false"></ion-icon>
-        </ion-button>
-        <ion-button>
-                <ion-icon name="search-outline"></ion-icon>
-                <ion-icon name="search" *ngIf="false"></ion-icon>
-        </ion-button>
-        <ion-button>
-                <ion-icon name="camera-outline"></ion-icon>
-                <ion-icon name="camera" *ngIf="false"></ion-icon>
-        </ion-button>
-        <ion-button>
-                <ion-icon name="heart-outline"></ion-icon>
-                <ion-icon name="heart" *ngIf="false"></ion-icon>
-        </ion-button>
-        <ion-button>
-                <ion-icon name="person-circle-outline"></ion-icon>
-                <ion-icon name="person-circle" *ngIf="false"></ion-icon>
-        </ion-button>
-    </ion-buttons>
+  <ion-buttons>
+    <ion-button [routerLink]="['/home']">
+      <ion-icon name="home-outline"></ion-icon>
+      <ion-icon name="home" *ngIf="false"></ion-icon>
+    </ion-button>
+    <ion-button [routerLink]="['/search']">
+      <ion-icon name="search-outline"></ion-icon>
+      <ion-icon name="search" *ngIf="false"></ion-icon>
+    </ion-button>
+    <ion-button [routerLink]="['/camera']">
+      <ion-icon name="camera-outline"></ion-icon>
+      <ion-icon name="camera" *ngIf="false"></ion-icon>
+    </ion-button>
+    <ion-button [routerLink]="['/liked']">
+      <ion-icon name="heart-outline"></ion-icon>
+      <ion-icon name="heart" *ngIf="false"></ion-icon>
+    </ion-button>
+    <ion-button [routerLink]="['/account']">
+      <ion-icon name="person-circle-outline"></ion-icon>
+      <ion-icon name="person-circle" *ngIf="false"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+  <ion-buttons>
+    <ion-button [routerLink]="['/bookmark']">
+      <ion-icon name="bookmark-outline"></ion-icon>
+      <ion-icon name="bookmark" *ngIf="false"></ion-icon>
+    </ion-button>
+  </ion-buttons>
 </ion-toolbar>

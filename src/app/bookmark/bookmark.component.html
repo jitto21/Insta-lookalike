@@ -1,6 +1,41 @@
 <div class="bookmark-container">
     <div *ngIf="available" class="bookmarks">
-        <mat-card class="post" *ngFor="let post of bookmarkedPosts">
+      <ion-card class="post" [ngClass]="{ last: i == 20 }" *ngFor="let post of bookmarkedPosts;">
+        <ion-card-header class="no-padding-inline no-padding">
+          <ion-item lines="none">
+            <ion-avatar size="small">
+              <img src="https://gravatar.com/avatar/dba6bae8c566f9d4041fb9cd9ada7741?d=identicon&f=y">
+            </ion-avatar>
+            <ion-label class="post-author" style="margin-left:5px">
+              {{ post.author.toLowerCase() }}
+            </ion-label>
+          </ion-item>
+        </ion-card-header>
+        <img mat-card-image [src]="post.imagePath" [alt]="post.author" (dblclick)="onPostAction('like', post)"/>
+        <!-- <ion-button class="action-button" size="small" fill="clear" color="dark" (click)="onPostAction('like', post)">
+          <ion-icon [attr.name]="!post.like ?  'heart-outline' : 'heart'"></ion-icon>
+        </ion-button>
+        <ion-button class="action-button" size="small" fill="clear" color="dark" (click)="onPostAction('comment', post)">
+          <ion-icon name="chatbubble-outline"></ion-icon>
+        </ion-button>
+        <ion-button class="action-button" size="small" fill="clear" color="dark" (click)="onPostAction('share', post)">
+          <ion-icon name="send-outline" class="rotate-330"></ion-icon>
+        </ion-button>
+        <ion-button class="action-button" size="small" fill="clear" color="dark" (click)="onPostAction('bookmark', post)">
+          <ion-icon [attr.name]="!post.bookmark ?  'bookmark-outline' : 'bookmark'"></ion-icon>
+        </ion-button> -->
+        <!-- <ion-card-content>
+          <p>
+            <span class="post-author">{{ post.author.toLowerCase() }}.</span>
+            {{ post.title }}
+            <span class="more-btn" (click)="onClickMore(post)">
+              <p id="more-hide">{{ moreMsg ? "more..." : "hide." }}</p>
+            </span>
+          </p>
+          <p *ngIf="post.more" class="desc">{{ post.description }}</p>
+        </ion-card-content> -->
+      </ion-card>
+        <!-- <mat-card class="post" *ngFor="let post of bookmarkedPosts">
             <mat-card-header>
                 <div mat-card-avatar class="post-header-image"></div>
                 <mat-card-title>{{ post.author }}</mat-card-title>
@@ -11,17 +46,11 @@
             <mat-card-content>
                 <p>
                     <span class="post-author">{{ post.author }}.</span>
-                    <!-- {{post.title}}<span class="more-btn" (click)="onClickMore(post)">more...</span> -->
                 </p>
                 <p *ngIf="post.more" class="desc">{{ post.description }}</p>
-                <!-- <span class="more-btn" (click)="onViewComments(post)">View All Comments</span>
-                    <div class="comments" *ngIf="post.comments.length>0">
-                        <p *ngFor="let comment of post.comments">
-                            {{ comment }}
-                        </p>
-                    </div> -->
+
             </mat-card-content>
-        </mat-card>
+        </mat-card> -->
     </div>
     <div *ngIf="!available" class="alert alert-danger">
         No Bookmarks

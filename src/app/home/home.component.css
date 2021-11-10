@@ -1,36 +1,11 @@
-.feed-container {
-  /* width: 95%;
-  margin: 0px auto; */
-}
-
-mat-spinner {
-  margin: 0px auto;
-  width: 5rem;
-}
-
-mat-card-actions button {
-  padding: 0px;
-  margin: 0px;
-}
-
-mat-card-actions i {
-  font-size: 1.2rem;
-}
-
 .feed {
   width: 100%;
   margin: 0px auto;
 }
 
-.post {
-  width: 80%;
-  margin: 0px auto;
-  margin-bottom: 2rem;
-}
-
 .post-author {
   font-weight: bold;
-  margin-right: 0.5rem;
+  margin-right: 0.5em;
 }
 
 .post-header-image {
@@ -44,9 +19,6 @@ mat-card-actions i {
   cursor: pointer;
 }
 
-.last {
-  margin-bottom: 50px;
-}
 .btn-right {
   margin-left: auto;
   width: 40px;

@@ -33,32 +33,32 @@ export class HomeComponent implements OnInit {
     this.loading = true;
     this.homeService.getPosts(pageNum)
       .subscribe((resData) => {
-        setTimeout(() => {
-          this.loading = false;
-        }, 3000);
+        // setTimeout(() => {
+        this.loading = false;
+        // }, 3000);
         console.log(resData);
         this.posts.push(...resData);
-        if(this.posts.length > 30) {
+        if (this.posts.length > 30) {
           this._snackBar.open("Posts Limit Reached", "OK", {
             duration: 2000,
           });
-        return;
+          return;
         }
 
         try {
           this.bookmarkedPosts = this.homeService.getBookmarkPosts().bookmarkedPosts;
           this.bookmarkedPosts.forEach(bPost => {
-            this.posts.map(post=> {
-              if(bPost.author === post.author) {
+            this.posts.map(post => {
+              if (bPost.author === post.author) {
                 post.bookmark = bPost.bookmark;
               }
-            })
-          }) 
+            });
+          });
         } catch (error) {
-          
+
         }
         console.log("Posts ==> ", this.posts);
-      },(error)=> this.loading = false);
+      }, (error) => this.loading = false);
   }
 
   onClickMore(post: PostModel) {
@@ -76,29 +76,26 @@ export class HomeComponent implements OnInit {
   }
 
   onBookmarkPost(post: PostModel) {
-    post.bookmark = !post.bookmark;
     console.log("Boomkark=> ", post);
     this.homeService.bookmarkPost(post);
-    if(post.bookmark) {
-      this._snackBar.open("Saved to Bookmarks", "OK", {
-        duration: 2000,
-      });
-    } else {
-      this._snackBar.open("Removed from Bookmarks", "", {
-        duration: 2000,
-      });
-    }
-
   }
 
   onLikePost(post: PostModel) {
     post.like = !post.like;
-    console.log("Like=> ", post.like)
+    console.log("Like=> ", post.like);
 
   }
 
   isBookmarked(post: PostModel) {
     return post.bookmark;
+  }
+
+  onPostAction(action: string, post: PostModel) {
+    post[action] = !post[action];
+    console.log(action, post[action]);
+    if (action === 'bookmark') {
+      this.onBookmarkPost(post);
+    }
   }
 
 }

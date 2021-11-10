@@ -16,3 +16,20 @@ body {
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
 }
+
+.no-padding-inline {
+  padding-inline: 0;
+}
+
+.no-padding {
+  padding: 0;
+}
+
+.rotate-330 {
+  transform: rotate(330deg);
+}
+
+.bookmarks ion-card:last-child,
+.feed ion-card:last-child {
+  margin-bottom: 76px;
+}

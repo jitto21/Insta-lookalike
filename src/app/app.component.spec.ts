@@ -20,16 +20,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'riafy-challenge'`, () => {
+  it(`should have as title 'insta-lookalike'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('riafy-challenge');
+    expect(app.title).toEqual('insta-lookalike');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('riafy-challenge app is running!');
+    expect(compiled.querySelector('.content span').textContent).toContain('insta-lookalike app is running!');
   });
 });

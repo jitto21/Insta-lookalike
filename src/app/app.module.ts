@@ -12,6 +12,7 @@ import { HeaderComponent } from './header/header.component';
 import { BookmarkComponent } from './bookmark/bookmark.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
+import { IonicModule } from '@ionic/angular';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { FooterComponent } from './footer/footer.component';
     MaterialModule,
     CommonModule,
     InfiniteScrollModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    IonicModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]

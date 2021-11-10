@@ -8,3 +8,7 @@
 .center {
     margin: 0px auto;
 }
+
+ion-buttons {
+    justify-content: center;
+}

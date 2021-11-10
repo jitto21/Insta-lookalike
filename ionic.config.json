@@ -1,10 +1,12 @@
 {
   "defaultProject": "insta-lookalike",
   "projects": {
-     "insta-lookalike": {
-        "name": "insta-lookalike",
-        "integrations": {},
-        "type": "angular"
-     }
+    "insta-lookalike": {
+      "name": "insta-lookalike",
+      "integrations": {
+        "capacitor": {}
+      },
+      "type": "angular"
+    }
   }
 }

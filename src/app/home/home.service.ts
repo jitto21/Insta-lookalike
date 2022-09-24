@@ -16,7 +16,7 @@ export class HomeService {
     getPosts(pageNum: number) {
         this.saveToLocalStorage();
         return this.http.get<{ articles: any, status: string, totalResults: number }>
-            (`${this.url}`)
+            (`${this.oldUrl}`)
             .pipe(map(obj => {
                 console.log(obj);
                 return obj.articles.map(post => {

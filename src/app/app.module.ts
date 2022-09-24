@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FooterComponent } from './footer/footer.component';
 import { IonicModule } from '@ionic/angular';
 import { LoadingComponent } from './loading/loading.component';
+import { pageAnimation } from 'src/animations/page.animation';
 
 
 @NgModule({
@@ -33,7 +34,9 @@ import { LoadingComponent } from './loading/loading.component';
     CommonModule,
     InfiniteScrollModule,
     BrowserAnimationsModule,
-    IonicModule.forRoot()
+    IonicModule.forRoot({
+      navAnimation: pageAnimation
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]
